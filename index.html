@@ -370,6 +370,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/03/我的博客搭建完成/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/03/我的博客搭建完成/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -438,10 +448,16 @@
       
         
           
-            <h4 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a><strong>搭建博客</strong></h4><p>一直都想有一个自己的博客，今使用 GitHub 时看见 GitHub+Hexo 也可以搭建静态博客，便产生了搭建博客的想法，于是便开始着手搭建。<br>本博客于2018/3/1开始搭建，于2018/3/3基本搭建完成，后期继续优化。</p>
-<h4 id="搭建博客的目的"><a href="#搭建博客的目的" class="headerlink" title="搭建博客的目的"></a><strong>搭建博客的目的</strong></h4><p>用于写技术博客，也用于记录生活,后期会持续的定时更新博客。</p>
-
-          
+          搭建博客一直都想有一个自己的博客，今使用 GitHub 时看见 GitHub+Hexo 也可以搭建静态博客，便产生了搭建博客的想法，于是便开始着手搭建。本博客于2018/3/1开始搭建，于2018/3/3基本搭建完成，后期继续优化。
+搭建博
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/03/我的博客搭建完成/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -533,6 +549,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/01/2018-3-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/01/2018-3-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -601,9 +627,16 @@
       
         
           
-            <p>  要狠心，要改过自新，要向前看，要赢。</p>
+            要狠心，要改过自新，要向前看，要赢。
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/01/2018-3-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -956,6 +989,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'nzuFcVlUCwnaWvsdId91mmLe-gzGzoHsz',
+        appKey: 'GtU0aLwl5fLDfylYaqtVkNS6y',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
