@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[my blog 搭建完成]]></title>
+    <url>%2F2018%2F03%2F03%2F%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%AE%8C%E6%88%90%2F</url>
+    <content type="text"><![CDATA[搭建博客一直都想有一个自己的博客，今使用 GitHub 时看见 GitHub+Hexo 也可以搭建静态博客，便产生了搭建博客的想法，于是便开始着手搭建。本博客于2018/3/1开始搭建，于2018/3/3基本搭建完成，后期继续优化。 搭建博客的目的用于写技术博客，也用于记录生活,后期会持续的定时更新博客。]]></content>
+      <categories>
+        <category>life</category>
+      </categories>
+      <tags>
+        <tag>life</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[2018.3.1]]></title>
+    <url>%2F2018%2F03%2F01%2F2018-3-1%2F</url>
+    <content type="text"><![CDATA[要狠心，要改过自新，要向前看，要赢。]]></content>
+  </entry>
+</search>
