@@ -89,11 +89,11 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://a3.qpic.cn/psb?/V117hBb71Wct8g/im*SNwaFVdRLBfwV1RONxnIuEm8crrioI7LxjMdoqO4!/b/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=PgcyAwAAAAADFzo!&vuin=541652148&tm=1520748000&sce=60-2-2&rf=viewer_4">
 <meta property="og:image" content="http://a4.qpic.cn/psb?/V117hBb71Wct8g/EDK5uuOrjxTJux2dUNRYxHrAvPITisi6gOSnlCwhtho!/b/dKcAAAAAAAAA&ek=1&kp=1&pt=0&bo=Rgc3AwAAAAADF0c!&vuin=541652148&tm=1520762400&sce=60-2-2&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V117hBb71Wct8g/fKhTyPn0e2B3QaW6tBI7PYEnusgzM92jy8T09Udvxyc!/b/dCIBAAAAAAAA&bo=cQSqAQAAAAADF.w!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V117hBb71Wct8g/IJlaWTOWOIE.XxEf3njhPAKv*fM3B65T4pCuDpCbK2o!/b/dCIBAAAAAAAA&bo=fASzAQAAAAADF*g!&rf=viewer_4">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V117hBb71Wct8g/WWmgwHtNHlbhGjfUsNrXmj4ofSxmfyiPJUOF1nt5D6I!/b/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=cASqAQAAAAARF*8!&vuin=541652148&tm=1520773200&sce=60-4-3&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V117hBb71Wct8g/2bSH1i7yoKnri9j60m7FynZzszi2XM1j6u5bgmTF36k!/b/dCEBAAAAAAAA&bo=fASyAQAAAAARF.s!&rf=viewer_4">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V117hBb71Wct8g/f0hw*FjZRpbswI1OtmbTLflWRDQkda*Sf5S*wOPFrHU!/m/dKgAAAAAAAAA&ek=1&kp=1&pt=0&bo=vgQ7AQAAAAADF7I!&vuin=541652148&tm=1520762400&sce=60-4-3&rf=0-0">
 <meta property="og:image" content="http://a3.qpic.cn/psb?/V117hBb71Wct8g/bGrvEFGltcqG1DlAhjHMzG84ncJfv8EOB7Tb82ofdNM!/m/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=yAQEAQAAAAADF*s!&vuin=541652148&tm=1520762400&sce=60-4-3&rf=0-0">
-<meta property="og:updated_time" content="2018-03-11T10:57:52.784Z">
+<meta property="og:updated_time" content="2018-03-11T13:04:43.240Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="栈帧与函数的调用">
 <meta name="twitter:description" content="测试环境: vc2008 ####1、什么是栈   在计算机科学中，栈被定义为一个特殊的容器，用户可以将数据压入栈中（入栈，push），也可以将已经压入栈中的数据弹出（出栈，pop）,但栈这个容器必须遵守一条规则：先入栈的数据后出栈，多多少少像叠起来的一叠书，先叠上去的书在最下面，因此最后才能取出。  程序栈的简图 这里的ebp表示栈低寄器，esp表示栈顶寄存器，在栈上压入数据会导致esp减少，">
@@ -469,13 +469,13 @@
 </ul>
 <h4 id="3、我们来看一个看例子"><a href="#3、我们来看一个看例子" class="headerlink" title="3、我们来看一个看例子"></a>3、我们来看一个看例子</h4><p>  接下来，我们用一个简单的程序来说明函数的调用以及栈的布局<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int fun(int a, int b)</span><br><span class="line">&#123;</span><br><span class="line">	int z = a + b;</span><br><span class="line"></span><br><span class="line">	return z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a = 0xaaaaaaaa;</span><br><span class="line">	int b = 0xbbbbbbbb;</span><br><span class="line">	int c = fun(a, b);</span><br><span class="line"></span><br><span class="line">	printf(&quot;c = %d&quot;, c);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这里我们直接进行调试，通过汇编代码能看的更去清楚。<br><strong>我们先从main函数开始</strong></p>
-<p><img src="http://m.qpic.cn/psb?/V117hBb71Wct8g/fKhTyPn0e2B3QaW6tBI7PYEnusgzM92jy8T09Udvxyc!/b/dCIBAAAAAAAA&amp;bo=cQSqAQAAAAADF.w!&amp;rf=viewer_4" alt=""></p>
+<p><img src="http://a3.qpic.cn/psb?/V117hBb71Wct8g/WWmgwHtNHlbhGjfUsNrXmj4ofSxmfyiPJUOF1nt5D6I!/b/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=cASqAQAAAAARF*8!&amp;vuin=541652148&amp;tm=1520773200&amp;sce=60-4-3&amp;rf=viewer_4" alt=""></p>
 <p> 这里需要强调的是<strong>call</strong>命令，它有两个作用：</p>
 <ul>
 <li>把当前指令的下一条指令的地址压入栈中*</li>
 <li>跳转到函数体执行<br>到这里可能有人会想，cpu怎么知道我这会执行到那条代码，它是怎样计算的呢，在这里我们还需要知道一个寄存器，<strong>EIP寄存器（也叫程序计数器）</strong>，它总是指向当前指令的下一条指令的地址。<br><strong>下来我们进入fun函数体</strong></li>
 </ul>
-<p><img src="http://m.qpic.cn/psb?/V117hBb71Wct8g/IJlaWTOWOIE.XxEf3njhPAKv*fM3B65T4pCuDpCbK2o!/b/dCIBAAAAAAAA&amp;bo=fASzAQAAAAADF*g!&amp;rf=viewer_4" alt=""></p>
+<p><img src="http://m.qpic.cn/psb?/V117hBb71Wct8g/2bSH1i7yoKnri9j60m7FynZzszi2XM1j6u5bgmTF36k!/b/dCEBAAAAAAAA&amp;bo=fASyAQAAAAARF.s!&amp;rf=viewer_4" alt=""></p>
 <p>这样我就进入到了fun函数内部，当fun函数执行完时，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">011013DD  mov         esp,ebp </span><br><span class="line">011013DF  pop         ebp  </span><br><span class="line">011013E0  ret</span><br></pre></td></tr></table></figure></p>
 <p>使esp=sbp；  然后让 old  ebp出栈，至此ebp就回到了main函数的ebp，ret从栈中去出返回地址，并跳到此处。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01101429  add         esp,8</span><br></pre></td></tr></table></figure></p>
 <p>紧接着又执行了这句，使esp指向main函数的栈顶。</p>
