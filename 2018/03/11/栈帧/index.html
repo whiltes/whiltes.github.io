@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://m.qpic.cn/psb?/V117hBb71Wct8g/2bSH1i7yoKnri9j60m7FynZzszi2XM1j6u5bgmTF36k!/b/dCEBAAAAAAAA&bo=fASyAQAAAAARF.s!&rf=viewer_4">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V117hBb71Wct8g/f0hw*FjZRpbswI1OtmbTLflWRDQkda*Sf5S*wOPFrHU!/m/dKgAAAAAAAAA&ek=1&kp=1&pt=0&bo=vgQ7AQAAAAADF7I!&vuin=541652148&tm=1520762400&sce=60-4-3&rf=0-0">
 <meta property="og:image" content="http://a3.qpic.cn/psb?/V117hBb71Wct8g/bGrvEFGltcqG1DlAhjHMzG84ncJfv8EOB7Tb82ofdNM!/m/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=yAQEAQAAAAADF*s!&vuin=541652148&tm=1520762400&sce=60-4-3&rf=0-0">
-<meta property="og:updated_time" content="2018-03-12T00:04:01.319Z">
+<meta property="og:updated_time" content="2018-03-12T00:08:13.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="栈帧与函数的调用">
 <meta name="twitter:description" content="测试环境: vc2008 1、什么是栈  在计算机科学中，栈被定义为一个特殊的容器，用户可以将数据压入栈中（入栈，push），也可以将已经压入栈中的数据弹出（出栈，pop）,但栈这个容器必须遵守一条规则：先入栈的数据后出栈，多多少少像叠起来的一叠书，先叠上去的书在最下面，因此最后才能取出。  程序栈的简图 这里的ebp表示栈低寄器，esp表示栈顶寄存器，在栈上压入数据会导致esp减少，弹出数据会">
@@ -475,7 +475,7 @@
 </ul>
 <p><img src="http://m.qpic.cn/psb?/V117hBb71Wct8g/2bSH1i7yoKnri9j60m7FynZzszi2XM1j6u5bgmTF36k!/b/dCEBAAAAAAAA&amp;bo=fASyAQAAAAARF.s!&amp;rf=viewer_4" alt=""></p>
 <p>这样我就进入到了fun函数内部，当fun函数执行完时，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">011013DD  mov         esp,ebp </span><br><span class="line">011013DF  pop         ebp  </span><br><span class="line">011013E0  ret</span><br></pre></td></tr></table></figure></p>
-<p>使esp=sbp；  然后让 old  ebp出栈，至此ebp就回到了main函数的ebp，ret从栈中去出返回地址，并跳到此处。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01101429  add         esp,8</span><br></pre></td></tr></table></figure></p>
+<p>使esp=ebp；  然后让 old  ebp出栈，至此ebp就回到了main函数的ebp，ret从栈中去出返回地址，并跳到此处。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01101429  add         esp,8</span><br></pre></td></tr></table></figure></p>
 <p>紧接着又执行了这句，使esp指向main函数的栈顶。</p>
 <p>#####fun函数的这段汇编代码基本分为下面几步：<br>1.保存edp，让edp指向目前的栈顶<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">00E913B0  push        ebp  </span><br><span class="line">00E913B1  mov         ebp,esp</span><br></pre></td></tr></table></figure></p>
 <p>2.在栈上开辟一块空间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00E913B3  sub         esp,0CCh</span><br></pre></td></tr></table></figure></p>
