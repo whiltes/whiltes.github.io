@@ -42,8 +42,8 @@
         <category>C语言练习</category>
       </categories>
       <tags>
-        <tag>C语言</tag>
         <tag>可变参数</tag>
+        <tag>C语言</tag>
       </tags>
   </entry>
   <entry>
@@ -54,8 +54,8 @@
         <category>c语言常见问题解析</category>
       </categories>
       <tags>
-        <tag>C语言</tag>
         <tag>可变参数</tag>
+        <tag>C语言</tag>
       </tags>
   </entry>
   <entry>
@@ -87,7 +87,7 @@
     <url>%2F2018%2F03%2F11%2F%E6%A0%88%E5%B8%A7%2F</url>
     <content type="text"><![CDATA[测试环境: vc2008 1、什么是栈 在计算机科学中，栈被定义为一个特殊的容器，用户可以将数据压入栈中（入栈，push），也可以将已经压入栈中的数据弹出（出栈，pop）,但栈这个容器必须遵守一条规则：先入栈的数据后出栈，多多少少像叠起来的一叠书，先叠上去的书在最下面，因此最后才能取出。 程序栈的简图 这里的ebp表示栈低寄器，esp表示栈顶寄存器，在栈上压入数据会导致esp减少，弹出数据会使得esp增大。相反，直接减小esp的值相当于开辟空间，增大esp的值相当于回收空间。 2、一个很常见的活动记录 活动记录 3、我们来看一个看例子 接下来，我们用一个简单的程序来说明函数的调用以及栈的布局 1234567891011121314151617181920#include &lt;stdio.h&gt;int fun(int a, int b)&#123; int z = a + b; return z;&#125;int main()&#123; int a = 0xaaaaaaaa; int b = 0xbbbbbbbb; int c = fun(a, b); printf(&quot;c = %d&quot;, c); return 0;&#125; 这里我们直接进行调试，通过汇编代码能看的更去清楚。我们先从main函数开始 这里需要强调的是call命令，它有两个作用： 把当前指令的下一条指令的地址压入栈中 跳转到函数体执行到这里可能有人会想，cpu怎么知道我这会执行到那条代码，它是怎样计算的呢，在这里我们还需要知道一个寄存器，EIP寄存器（也叫程序计数器），它总是指向当前指令的下一条指令的地址。下来我们进入fun函数体 这样我就进入到了fun函数内部，当fun函数执行完时，执行123011013DD mov esp,ebp 011013DF pop ebp 011013E0 ret 使esp=ebp； 然后让 old ebp出栈，至此ebp就回到了main函数的ebp，ret从栈中去出返回地址，并跳到此处。101101429 add esp,8 紧接着又执行了这句，使esp指向main函数的栈顶。 fun函数的这段汇编代码基本分为下面几步：1.保存edp，让edp指向目前的栈顶1200E913B0 push ebp 00E913B1 mov ebp,esp 2.在栈上开辟一块空间100E913B3 sub esp,0CCh 3.保存ebx，esi，edi寄存器12300E913B9 push ebx 00E913BA push esi 00E913BB push edi 4.加入调试信息123400E913BC lea edi,[ebp-0CCh] 00E913C2 mov ecx,33h 00E913C7 mov eax,0CCCCCCCCh 00E913CC rep stos dword ptr es:[edi] 5.返回z，在这里是返回值通过eax寄存器传回100E913D7 mov eax,dword ptr [z] 6.从栈上恢复edi，esi，ebx寄存器12300E913DA pop edi 00E913DB pop esi 00E913DC pop ebx 7.恢复进入函数前的esp和edp1200E913DD mov esp,ebp 00E913DF pop ebp 8.使用ret指令返回100E913E0 ret 特别注意：main函数也是一个被调函数，因此调用它的过程和调用fun函数基本类似 4、通过栈帧修改ret返回的地址这里我们调用fun函数后，不让ret返回到main函数，而是修改它的地址，让他来到bug函数，将栈中存的返回地址保存到全局变量ret中，执行完bug函数后，让函数在返回main函数测试环境为vc6.0 12345678910111213141516171819202122232425262728293031323334353637383940#include &lt;stdio.h&gt;#include &lt;windows.h&gt;void *ret = NULL;void bug()&#123; int first = 0; int *p = &amp;first; p+=2; *p= (int)ret; printf(&quot;I am a bug...\n&quot;);&#125;int myfun(int x,int y)&#123; int *p = &amp;x; p--; ret = *p; *p = bug; printf(&quot;run myfun...!\n&quot;); return 0; &#125;int main()&#123; int a = 0xaaaaaaaa; int b = 0xbbbbbbbb; int c; printf(&quot;main run...\n&quot;); c = myfun(a,b); printf(&quot;you should run here!\n&quot;); printf(&quot;res : %d\n&quot;,c); system(&quot;pause&quot;); return 0;&#125; 执行结果如图： 但是一按回车就会出错，原因是call命令会把当前命令的下一条指令的地址压入栈中，执行完后会跳转到函数体。但是我们调用BUG函数时没有通过call命令调用，因此，我们少push一次，按回车后的esp应该指向的是main-esp-4；因此我们需要在main函数里调用完fun函数后将esp+4，保持栈帧平衡， 如下：12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include &lt;stdio.h&gt;#include &lt;windows.h&gt;void *ret = NULL;void bug()&#123; int first = 0; int *p = &amp;first; p+=2; *p= (int)ret; printf(&quot;I am a bug...\n&quot;);&#125;int myfun(int x,int y)&#123; int *p = &amp;x; p--; ret = *p; *p = bug; printf(&quot;run myfun...!\n&quot;); return 0; &#125;int main()&#123; int a = 0xaaaaaaaa; int b = 0xbbbbbbbb; int c; printf(&quot;main run...\n&quot;); c = myfun(a,b); __asm &#123; sub esp, 4; &#125; printf(&quot;you should run here!\n&quot;); printf(&quot;res : %d\n&quot;,c); system(&quot;pause&quot;); return 0;&#125; 执行结果如图：]]></content>
       <categories>
-        <category>C语言常见问题解析</category>
+        <category>c语言常见问题解析</category>
       </categories>
       <tags>
         <tag>C语言</tag>
