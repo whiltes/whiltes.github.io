@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[Linux下使用命令安装gcc/g++,gdb]]></title>
     <url>%2F2018%2F03%2F21%2FLinux%E4%B8%8B%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85gcc-g-gdb-vim%2F</url>
-    <content type="text"><![CDATA[title: Linux下使用命令安装gcc/g++,gdbdate: 2018-03-21 19:36:25tags: [Linux,gcc,gdb,vim]categories: Linux 注意：本博文在Centos6.0版本上进行了测试，不同的版本可能会出现差异以下均为root用户下的操作，安装时请确保你的Linux可以上网 gcc,g++,gdb的用途 gcc用来编译C程序 g++用来编译C++程序， 使用GDB来调试程序 gcc的安装：现在下载的Centos的版本几乎都会自带gcc和vim，所以我们需要的只是g++而已；如果没有请先下载 gcc；检查你的Linux是否有gcc： which gcc; 如果有就会列出命令的路径，如图：如果没有使用以下命令安装： yum install gcc; g++的安装：先检查是否有g++： which g++; 如果没有使用以下命令安装： yum install gcc-c++; gdb的安装：root用户：yum install gdb 普通用户：sudo yum install gdb]]></content>
+    <content type="text"><![CDATA[注意：本博文在Centos6.0版本上进行了测试，不同的版本可能会出现差异以下均为root用户下的操作，安装时请确保你的Linux可以上网 gcc,g++,gdb的用途 gcc用来编译C程序 g++用来编译C++程序， 使用GDB来调试程序 gcc的安装：现在下载的Centos的版本几乎都会自带gcc和vim，所以我们需要的只是g++而已；如果没有请先下载 gcc；检查你的Linux是否有gcc：1which gcc; 如果有就会列出命令的路径，如图： 如果没有使用以下命令安装：1yum install gcc; g++的安装：先检查是否有g++： 1which g++; 如果没有使用以下命令安装：1yum install gcc-c++; gdb的安装：12root用户：yum install gdb普通用户：sudo yum install gdb]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>gcc</tag>
+        <tag>gdb</tag>
+        <tag>vim</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Linux基础知识]]></title>
