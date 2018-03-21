@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="C语言,栈帧,函数," />
+  <meta name="keywords" content="linux,命令," />
 
 
 
@@ -79,25 +79,21 @@
 
 
 
-<meta name="description" content="测试环境: vc2008 1、什么是栈  在计算机科学中，栈被定义为一个特殊的容器，用户可以将数据压入栈中（入栈，push），也可以将已经压入栈中的数据弹出（出栈，pop）,但栈这个容器必须遵守一条规则：先入栈的数据后出栈，多多少少像叠起来的一叠书，先叠上去的书在最下面，因此最后才能取出。  程序栈的简图 这里的ebp表示栈低寄器，esp表示栈顶寄存器，在栈上压入数据会导致esp减少，弹出数据会">
-<meta name="keywords" content="C语言,栈帧,函数">
+<meta name="description" content="1、Linux文件权限我们先来输入命令：ls -al来查看文件属性。如图：  属性说明：    dr-xr-xr-x 22 root root 4096 Mar 17 18:12 .     用户权限 连接数 所有者 用户组 文件大小 修改日期 文件名    文件类型与权限如图： r:表示用户可以查看该目录下的内容，即可以使用“ls”命令w:表示用户可以修改该目录下的内容，包括增加，删除，重命名等">
+<meta name="keywords" content="linux,命令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="栈帧与函数的调用">
-<meta property="og:url" content="http://yoursite.com/2018/03/11/栈帧/index.html">
+<meta property="og:title" content="Linux基础知识">
+<meta property="og:url" content="http://yoursite.com/2018/03/21/Linux基础知识/index.html">
 <meta property="og:site_name" content="草莓干先生">
-<meta property="og:description" content="测试环境: vc2008 1、什么是栈  在计算机科学中，栈被定义为一个特殊的容器，用户可以将数据压入栈中（入栈，push），也可以将已经压入栈中的数据弹出（出栈，pop）,但栈这个容器必须遵守一条规则：先入栈的数据后出栈，多多少少像叠起来的一叠书，先叠上去的书在最下面，因此最后才能取出。  程序栈的简图 这里的ebp表示栈低寄器，esp表示栈顶寄存器，在栈上压入数据会导致esp减少，弹出数据会">
+<meta property="og:description" content="1、Linux文件权限我们先来输入命令：ls -al来查看文件属性。如图：  属性说明：    dr-xr-xr-x 22 root root 4096 Mar 17 18:12 .     用户权限 连接数 所有者 用户组 文件大小 修改日期 文件名    文件类型与权限如图： r:表示用户可以查看该目录下的内容，即可以使用“ls”命令w:表示用户可以修改该目录下的内容，包括增加，删除，重命名等">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://a3.qpic.cn/psb?/V117hBb71Wct8g/im*SNwaFVdRLBfwV1RONxnIuEm8crrioI7LxjMdoqO4!/b/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=PgcyAwAAAAADFzo!&vuin=541652148&tm=1520748000&sce=60-2-2&rf=viewer_4">
-<meta property="og:image" content="http://a4.qpic.cn/psb?/V117hBb71Wct8g/EDK5uuOrjxTJux2dUNRYxHrAvPITisi6gOSnlCwhtho!/b/dKcAAAAAAAAA&ek=1&kp=1&pt=0&bo=Rgc3AwAAAAADF0c!&vuin=541652148&tm=1520762400&sce=60-2-2&rf=viewer_4">
-<meta property="og:image" content="http://a3.qpic.cn/psb?/V117hBb71Wct8g/WWmgwHtNHlbhGjfUsNrXmj4ofSxmfyiPJUOF1nt5D6I!/b/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=cASqAQAAAAARF*8!&vuin=541652148&tm=1520773200&sce=60-4-3&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V117hBb71Wct8g/2bSH1i7yoKnri9j60m7FynZzszi2XM1j6u5bgmTF36k!/b/dCEBAAAAAAAA&bo=fASyAQAAAAARF.s!&rf=viewer_4">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V117hBb71Wct8g/f0hw*FjZRpbswI1OtmbTLflWRDQkda*Sf5S*wOPFrHU!/m/dKgAAAAAAAAA&ek=1&kp=1&pt=0&bo=vgQ7AQAAAAADF7I!&vuin=541652148&tm=1520762400&sce=60-4-3&rf=0-0">
-<meta property="og:image" content="http://a3.qpic.cn/psb?/V117hBb71Wct8g/bGrvEFGltcqG1DlAhjHMzG84ncJfv8EOB7Tb82ofdNM!/m/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=yAQEAQAAAAADF*s!&vuin=541652148&tm=1520762400&sce=60-4-3&rf=0-0">
-<meta property="og:updated_time" content="2018-03-19T13:45:56.771Z">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V117hBb71Wct8g/gk0Yxu9SjqaPqaAQsFyZPpjgCAProswVWHNhDoA9pXA!/b/dCEBAAAAAAAA&bo=eAO*AQAAAAADF*c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V117hBb71Wct8g/VfZ2cV4J3uiL5S30euMNtY8ms26r1u1TqALFHwCmLGA!/b/dCEBAAAAAAAA&bo=AAQABAAAAAADFzI!&rf=viewer_4">
+<meta property="og:updated_time" content="2018-03-21T11:32:35.859Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="栈帧与函数的调用">
-<meta name="twitter:description" content="测试环境: vc2008 1、什么是栈  在计算机科学中，栈被定义为一个特殊的容器，用户可以将数据压入栈中（入栈，push），也可以将已经压入栈中的数据弹出（出栈，pop）,但栈这个容器必须遵守一条规则：先入栈的数据后出栈，多多少少像叠起来的一叠书，先叠上去的书在最下面，因此最后才能取出。  程序栈的简图 这里的ebp表示栈低寄器，esp表示栈顶寄存器，在栈上压入数据会导致esp减少，弹出数据会">
-<meta name="twitter:image" content="http://a3.qpic.cn/psb?/V117hBb71Wct8g/im*SNwaFVdRLBfwV1RONxnIuEm8crrioI7LxjMdoqO4!/b/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=PgcyAwAAAAADFzo!&vuin=541652148&tm=1520748000&sce=60-2-2&rf=viewer_4">
+<meta name="twitter:title" content="Linux基础知识">
+<meta name="twitter:description" content="1、Linux文件权限我们先来输入命令：ls -al来查看文件属性。如图：  属性说明：    dr-xr-xr-x 22 root root 4096 Mar 17 18:12 .     用户权限 连接数 所有者 用户组 文件大小 修改日期 文件名    文件类型与权限如图： r:表示用户可以查看该目录下的内容，即可以使用“ls”命令w:表示用户可以修改该目录下的内容，包括增加，删除，重命名等">
+<meta name="twitter:image" content="http://m.qpic.cn/psb?/V117hBb71Wct8g/gk0Yxu9SjqaPqaAQsFyZPpjgCAProswVWHNhDoA9pXA!/b/dCEBAAAAAAAA&bo=eAO*AQAAAAADF*c!&rf=viewer_4">
 
 
 
@@ -127,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/11/栈帧/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/21/Linux基础知识/"/>
 
 
 
 
 
-  <title>栈帧与函数的调用 | 草莓干先生</title>
+  <title>Linux基础知识 | 草莓干先生</title>
   
 
 
@@ -314,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/11/栈帧/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/21/Linux基础知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="whiltes">
@@ -331,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">栈帧与函数的调用</h1>
+          <h1 class="post-title" itemprop="name headline">Linux基础知识</h1>
         
 
         <div class="post-meta">
@@ -343,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-11T13:45:01+08:00">
-                2018-03-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T17:28:28+08:00">
+                2018-03-21
               </time>
             
 
@@ -366,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C语言解析/" itemprop="url" rel="index">
-                    <span itemprop="name">C语言解析</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -384,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/11/栈帧/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/11/栈帧/" itemprop="commentCount"></span>
+                <a href="/2018/03/21/Linux基础知识/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/21/Linux基础知识/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -393,7 +389,7 @@
 
           
           
-             <span id="/2018/03/11/栈帧/" class="leancloud_visitors" data-flag-title="栈帧与函数的调用">
+             <span id="/2018/03/21/Linux基础知识/" class="leancloud_visitors" data-flag-title="Linux基础知识">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -418,7 +414,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,234
+                  1,557
                 </span>
               
 
@@ -434,7 +430,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  6
                 </span>
               
             </div>
@@ -455,44 +451,157 @@
       
 
       
-        <p> <em>测试环境: vc2008</em></p>
-<h4 id="1、什么是栈"><a href="#1、什么是栈" class="headerlink" title="1、什么是栈"></a>1、什么是栈</h4><p>  在计算机科学中，栈被定义为一个特殊的容器，用户可以将数据压入栈中（入栈，push），也可以将已经压入栈中的数据弹出（出栈，pop）,但栈这个容器必须遵守一条规则：<strong>先入栈的数据后出栈</strong>，多多少少像叠起来的一叠书，先叠上去的书在最下面，因此最后才能取出。</p>
+        <h4 id="1、Linux文件权限"><a href="#1、Linux文件权限" class="headerlink" title="1、Linux文件权限"></a>1、Linux文件权限</h4><p>我们先来输入命令：<strong>ls -al</strong>来查看文件属性。<br>如图：</p>
+<p><img src="http://m.qpic.cn/psb?/V117hBb71Wct8g/gk0Yxu9SjqaPqaAQsFyZPpjgCAProswVWHNhDoA9pXA!/b/dCEBAAAAAAAA&amp;bo=eAO*AQAAAAADF*c!&amp;rf=viewer_4" alt=""></p>
+<p>属性说明：</p>
+<table>
+<thead>
+<tr>
+<th>dr-xr-xr-x</th>
+<th>22</th>
+<th>root</th>
+<th>root</th>
+<th>4096</th>
+<th>Mar 17 18:12</th>
+<th>.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用户权限</td>
+<td>连接数</td>
+<td>所有者</td>
+<td>用户组</td>
+<td>文件大小</td>
+<td>修改日期</td>
+<td>文件名</td>
+</tr>
+</tbody>
+</table>
+<p>文件类型与权限如图：</p>
+<p><img src="http://m.qpic.cn/psb?/V117hBb71Wct8g/VfZ2cV4J3uiL5S30euMNtY8ms26r1u1TqALFHwCmLGA!/b/dCEBAAAAAAAA&amp;bo=AAQABAAAAAADFzI!&amp;rf=viewer_4" alt=""><br><strong>r:表示用户可以查看该目录下的内容，即可以使用“ls”命令</strong><br><strong>w:表示用户可以修改该目录下的内容，包括增加，删除，重命名等</strong><br><strong>x:表示用户可以进入该目录，即可以使用“cd”命令</strong></p>
+<p>我们不仅可以用 rwx表示文件的权限，还可以同数字表示：<br>具体如下：</p>
 <ul>
-<li><p>程序栈的简图</p>
-<p><img src="http://a3.qpic.cn/psb?/V117hBb71Wct8g/im*SNwaFVdRLBfwV1RONxnIuEm8crrioI7LxjMdoqO4!/b/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=PgcyAwAAAAADFzo!&amp;vuin=541652148&amp;tm=1520748000&amp;sce=60-2-2&amp;rf=viewer_4" alt="程序栈的简图"><br>这里的ebp表示栈低寄器，esp表示栈顶寄存器，在栈上压入数据会导致esp减少，弹出数据会使得esp增大。相反，直接减小esp的值相当于开辟空间，增大esp的值相当于回收空间。</p>
+<li>r: 4</li>
+<li>w: 2</li>
+<li>x: 1</li>
+<li>每种身份各自的三个权限（r、w、x）分数是需要累加的，例如当权限为[-rwxrwx–],分数则是：</li>
+<li>owner = rwx = 4+2+1 = 7</li>
+<li>group = rwx = 4+2+1 = 7</li>
+<li>others = — = 0+0+0 = 0</li>
+<li>所以，该文件的权限数字就是770</li>
+</ul>
+<h4 id="2、Linux下的重要目录的含义"><a href="#2、Linux下的重要目录的含义" class="headerlink" title="2、Linux下的重要目录的含义"></a>2、Linux下的重要目录的含义</h4><table>
+<thead>
+<tr>
+<th>目录名</th>
+<th>目录的作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/proc</td>
+<td>操作系统运行时，进程信息及内核信息（比如CPU,硬盘分区，内存信息等）存放在这里。/proc目录是伪装的文件系统proc的挂载目录，proc并不是真正的文件系统，它的定义可以参见/etc/fstab。</td>
+</tr>
+<tr>
+<td>/etc</td>
+<td>二进制安装包的配置文件默认路径和服务启动命令存放的目录。</td>
+</tr>
+<tr>
+<td>/lib</td>
+<td>库文件存放目录</td>
+</tr>
+<tr>
+<td>/tmp</td>
+<td>临时文件目录，有时用户运行程序的时候，会产生临时文件。/tmp就用来存放临时文件的，权限比较特殊。</td>
+</tr>
+<tr>
+<td>/bin</td>
+<td>常用的二进制命令目录。比如ls cp mkdir 等；和/usr/bin类似。</td>
+</tr>
+<tr>
+<td>/usr</td>
+<td>这个是系统存放程序的目录，比如命令，帮助文件等。这个目录下有很多的文件和目录。当我们安装一个linux发行版官方提供的软件包时，大多安装在这里。</td>
+</tr>
+<tr>
+<td>/var</td>
+<td>这个目录的内容是经常变动的，看名字就知道，我们可以理解为vary的缩写，/var下有/var/log这是用来存放系统日志的目录，系统日志路径/var/log/messages。/var/www目录是定义apache服务器站点存放目录;/var/lib用来存放一些库文件，比如mysql的，已经mysql数据库的存放地。</td>
+</tr>
+<tr>
+<td>/usr/local</td>
+<td>这个目录一般是用来存放用户自编译安装软件的存放目录，一般是通过源码包安装的软件，如果没有特别指定安装目录的话，一般是安装在这个目录中。相当于C:\Program files</td>
+</tr>
+<tr>
+<td>/usr/src</td>
+<td>内核源码存放目录，比如下面有内核源码目录，比如linux,linux-2.XXX.XX目录等</td>
+</tr>
+<tr>
+<td>/usr/lib 和/usr/local/lib</td>
+<td>系统会使用到的函数库。</td>
+</tr>
+<tr>
+<td>/SElinux</td>
+<td>SELinux是一种基于域-类型模型(domain-type)的强制访问控制(MAC)安全系统，它由NSA编写并设计成内核模块包含到内核中，相应的某些安全相关的应用也被打了SELinux的补丁，最后还有一个相应的安全策略。</td>
+</tr>
+<tr>
+<td>/sys</td>
+<td>虚拟文件系统。和 /proc 目录相似，里面的数据也是保存在内存中的，它主要用来保存内核的相关信息</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3、Linux一些重要的命令"><a href="#3、Linux一些重要的命令" class="headerlink" title="3、Linux一些重要的命令"></a>3、Linux一些重要的命令</h4><ul>
+<li>du  -报告磁盘空间使用情况<ul>
+<li>-s  : 列出总量而已，而不列出每个别的目录占用容量；</li>
+<li>-a  : 列出所有文件与目录容量，，因为默认仅统计目录下面的文件量而已；</li>
+</ul>
+</li>
+<li>df  -报告文件系统磁盘空间的使用情况<ul>
+<li>-h  : 用常见的格式显示出大小(例如:1K 234M 2G)</li>
+<li>-i  : 用信息索引点代替块表示使用状况</li>
+</ul>
+</li>
+<li>top -可以显示当前系统正在执行的进程的相关信息，包括进程ID、内存占用率、CPU占用率等<ul>
+<li>-i  : &lt;时间&gt; 设置间隔时间</li>
+<li>-u  : &lt;用户名&gt; 指定用户名</li>
+<li>-p  : &lt;进程号&gt; 指定进程</li>
+<li>-b  : 批处理</li>
+<li>-s  : 保密模式</li>
+</ul>
+</li>
+<li>free  -命令显示系统使用和空闲的内存情况，包括物理内存、交互区内存(swap)和内核缓冲区内存<ul>
+<li>-b : 显示内存的单位为字节</li>
+<li>-k : 显示内存的单位为 KB</li>
+<li>-m : 显示内存的单位为 M</li>
+<li>-t : 总和信息</li>
+</ul>
+</li>
+<li>su  -运行替换用户和组标识的shell<ul>
+<li>-c : 传递单个COMMAND给-c的shell.</li>
+<li>-f : 传递-f给shell(针对csh或tcsh)</li>
+<li>-m : 不重置环境变量</li>
+</ul>
+</li>
+<li>sudo -用户也可以通过su切换到root用户运行命令。然而与su的启动一个root shell允许用户运行之后的所有的命令不同，sudo可以针对单个命令授予临时权限。sudo仅在需要时授予用户权限，减少了用户因为错误执行命令损坏系统的可能性。sudo也可以用来以其他用户身份执行命令。此外，sudo可以记录用户执行的命令，以及失败的特权获取。<ul>
+<li>-s : 以目标用户身份运行 shell</li>
+<li>– : 停止处理命令行参数</li>
+</ul>
+</li>
+<li>adduser  -帐号建立或更新使用者的资讯</li>
+<li>password -用于设置用户的认证信息，包括用户密码、密码过期时间等。系统管理者则能用它管理系统用户的密码。只有管理者可以指定用户名称，一般用户只能变更自己的密码。<ul>
+<li>-d：删除密码，仅有系统管理者才能使用；</li>
+<li>-k：设置只有在密码过期失效后，方能更新；</li>
+<li>-l：锁住密码；</li>
+<li>-s：列出密码的相关信息，仅有系统管理者才能使用；</li>
+<li>-u：解开已上锁的帐号</li>
+</ul>
+</li>
+<li><p>pstack - 显示每个进程的栈跟踪。pstack 命令必须由相应进程的属主或 root 运行。可以使用 pstack 来确定进程挂起的位置。此命令允许使用的唯一选项是要检查的进程的 PID。 </p>
+<ul>
+<li>work为工作用户，-p为显示进程识别码，ad_preprocess共启动了6个子线程，加上主线程共7个线程。</li>
+</ul>
 </li>
 </ul>
-<h4 id="2、一个很常见的活动记录"><a href="#2、一个很常见的活动记录" class="headerlink" title="2、一个很常见的活动记录"></a>2、一个很常见的活动记录</h4><ul>
-<li>活动记录<br><img src="http://a4.qpic.cn/psb?/V117hBb71Wct8g/EDK5uuOrjxTJux2dUNRYxHrAvPITisi6gOSnlCwhtho!/b/dKcAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=Rgc3AwAAAAADF0c!&amp;vuin=541652148&amp;tm=1520762400&amp;sce=60-2-2&amp;rf=viewer_4" alt=""></li>
-</ul>
-<h4 id="3、我们来看一个看例子"><a href="#3、我们来看一个看例子" class="headerlink" title="3、我们来看一个看例子"></a>3、我们来看一个看例子</h4><p>  接下来，我们用一个简单的程序来说明函数的调用以及栈的布局<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int fun(int a, int b)</span><br><span class="line">&#123;</span><br><span class="line">	int z = a + b;</span><br><span class="line"></span><br><span class="line">	return z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a = 0xaaaaaaaa;</span><br><span class="line">	int b = 0xbbbbbbbb;</span><br><span class="line">	int c = fun(a, b);</span><br><span class="line"></span><br><span class="line">	printf(&quot;c = %d&quot;, c);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这里我们直接进行调试，通过汇编代码能看的更去清楚。<br><strong>我们先从main函数开始</strong></p>
-<p><img src="http://a3.qpic.cn/psb?/V117hBb71Wct8g/WWmgwHtNHlbhGjfUsNrXmj4ofSxmfyiPJUOF1nt5D6I!/b/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=cASqAQAAAAARF*8!&amp;vuin=541652148&amp;tm=1520773200&amp;sce=60-4-3&amp;rf=viewer_4" alt=""></p>
-<p> 这里需要强调的是<strong>call</strong>命令，它有两个作用：</p>
-<ul>
-<li>把当前指令的下一条指令的地址压入栈中</li>
-<li>跳转到函数体执行<br>到这里可能有人会想，cpu怎么知道我这会执行到那条代码，它是怎样计算的呢，在这里我们还需要知道一个寄存器，<strong>EIP寄存器（也叫程序计数器）</strong>，它总是指向当前指令的下一条指令的地址。<br><strong>下来我们进入fun函数体</strong></li>
-</ul>
-<p><img src="http://m.qpic.cn/psb?/V117hBb71Wct8g/2bSH1i7yoKnri9j60m7FynZzszi2XM1j6u5bgmTF36k!/b/dCEBAAAAAAAA&amp;bo=fASyAQAAAAARF.s!&amp;rf=viewer_4" alt=""></p>
-<p>这样我就进入到了fun函数内部，当fun函数执行完时，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">011013DD  mov         esp,ebp </span><br><span class="line">011013DF  pop         ebp  </span><br><span class="line">011013E0  ret</span><br></pre></td></tr></table></figure></p>
-<p>使esp=ebp；  然后让 old  ebp出栈，至此ebp就回到了main函数的ebp，ret从栈中去出返回地址，并跳到此处。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01101429  add         esp,8</span><br></pre></td></tr></table></figure></p>
-<p>紧接着又执行了这句，使esp指向main函数的栈顶。</p>
-<p><strong> fun函数的这段汇编代码基本分为下面几步：</strong><br>1.保存edp，让edp指向目前的栈顶<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">00E913B0  push        ebp  </span><br><span class="line">00E913B1  mov         ebp,esp</span><br></pre></td></tr></table></figure></p>
-<p>2.在栈上开辟一块空间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00E913B3  sub         esp,0CCh</span><br></pre></td></tr></table></figure></p>
-<p>3.保存ebx，esi，edi寄存器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">00E913B9  push        ebx  </span><br><span class="line">00E913BA  push        esi  </span><br><span class="line">00E913BB  push        edi</span><br></pre></td></tr></table></figure></p>
-<p>4.加入调试信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">00E913BC  lea         edi,[ebp-0CCh] </span><br><span class="line">00E913C2  mov         ecx,33h </span><br><span class="line">00E913C7  mov         eax,0CCCCCCCCh </span><br><span class="line">00E913CC  rep stos    dword ptr es:[edi]</span><br></pre></td></tr></table></figure></p>
-<p>5.返回z，在这里是返回值通过eax寄存器传回<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00E913D7  mov         eax,dword ptr [z]</span><br></pre></td></tr></table></figure></p>
-<p>6.从栈上恢复edi，esi，ebx寄存器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">00E913DA  pop         edi  </span><br><span class="line">00E913DB  pop         esi  </span><br><span class="line">00E913DC  pop         ebx</span><br></pre></td></tr></table></figure></p>
-<p>7.恢复进入函数前的esp和edp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">00E913DD  mov         esp,ebp </span><br><span class="line">00E913DF  pop         ebp</span><br></pre></td></tr></table></figure></p>
-<p>8.使用ret指令返回<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00E913E0  ret</span><br></pre></td></tr></table></figure></p>
-<p><em>特别注意：main函数也是一个被调函数，因此调用它的过程和调用fun函数基本类似</em></p>
-<h4 id="4、通过栈帧修改ret返回的地址"><a href="#4、通过栈帧修改ret返回的地址" class="headerlink" title="4、通过栈帧修改ret返回的地址"></a>4、通过栈帧修改ret返回的地址</h4><p>这里我们调用fun函数后，不让ret返回到main函数，而是修改它的地址，让他来到bug函数，将栈中存的返回地址保存到全局变量ret中，执行完bug函数后，让函数在返回main函数<br><em>测试环境为vc6.0</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;windows.h&gt;</span><br><span class="line"></span><br><span class="line">void *ret = NULL;</span><br><span class="line"></span><br><span class="line">void bug()</span><br><span class="line">&#123;</span><br><span class="line">	int first = 0;</span><br><span class="line">	int *p = &amp;first;</span><br><span class="line">	p+=2;</span><br><span class="line">	*p= (int)ret;</span><br><span class="line">	printf(&quot;I am a bug...\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">int myfun(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	int *p = &amp;x;</span><br><span class="line">	p--;</span><br><span class="line">	ret = *p;</span><br><span class="line">	*p = bug;</span><br><span class="line"></span><br><span class="line">	printf(&quot;run myfun...!\n&quot;);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	int a = 0xaaaaaaaa;</span><br><span class="line">	int b = 0xbbbbbbbb;</span><br><span class="line">	int c;</span><br><span class="line">	printf(&quot;main run...\n&quot;);</span><br><span class="line">	c = myfun(a,b);</span><br><span class="line">	printf(&quot;you should run here!\n&quot;);</span><br><span class="line">	printf(&quot;res : %d\n&quot;,c);</span><br><span class="line"></span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>执行结果如图：</p>
-<p><img src="http://a1.qpic.cn/psb?/V117hBb71Wct8g/f0hw*FjZRpbswI1OtmbTLflWRDQkda*Sf5S*wOPFrHU!/m/dKgAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=vgQ7AQAAAAADF7I!&amp;vuin=541652148&amp;tm=1520762400&amp;sce=60-4-3&amp;rf=0-0" alt=""></p>
-<p>但是一按回车就会出错，原因是call命令会把当前命令的下一条指令的地址压入栈中，执行完后会跳转到函数体。但是我们调用BUG函数时没有通过call命令调用，因此，我们少push一次，按回车后的esp应该指向的是main-esp-4；因此我们需要在main函数里调用完fun函数后将esp+4，保持栈帧平衡，</p>
-<p>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;windows.h&gt;</span><br><span class="line"></span><br><span class="line">void *ret = NULL;</span><br><span class="line"></span><br><span class="line">void bug()</span><br><span class="line">&#123;</span><br><span class="line">	int first = 0;</span><br><span class="line">	int *p = &amp;first;</span><br><span class="line">	p+=2;</span><br><span class="line">	*p= (int)ret;</span><br><span class="line">	printf(&quot;I am a bug...\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">int myfun(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	int *p = &amp;x;</span><br><span class="line">	p--;</span><br><span class="line">	ret = *p;</span><br><span class="line">	*p = bug;</span><br><span class="line"></span><br><span class="line">	printf(&quot;run myfun...!\n&quot;);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	int a = 0xaaaaaaaa;</span><br><span class="line">	int b = 0xbbbbbbbb;</span><br><span class="line">	int c;</span><br><span class="line">	printf(&quot;main run...\n&quot;);</span><br><span class="line">	c = myfun(a,b);</span><br><span class="line"></span><br><span class="line">    __asm</span><br><span class="line">    &#123;</span><br><span class="line">        sub esp, 4;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	printf(&quot;you should run here!\n&quot;);</span><br><span class="line">	printf(&quot;res : %d\n&quot;,c);</span><br><span class="line"></span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>执行结果如图：<br><img src="http://a3.qpic.cn/psb?/V117hBb71Wct8g/bGrvEFGltcqG1DlAhjHMzG84ncJfv8EOB7Tb82ofdNM!/m/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=yAQEAQAAAAADF*s!&amp;vuin=541652148&amp;tm=1520762400&amp;sce=60-4-3&amp;rf=0-0" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pstree -p work | grep ad</span><br><span class="line"> </span><br><span class="line">sshd(22669)---bash(22670)---ad_preprocess(4551)-+-&#123;ad_preprocess&#125;(4552)</span><br><span class="line">                                                |-&#123;ad_preprocess&#125;(4553)</span><br><span class="line">                                                |-&#123;ad_preprocess&#125;(4554)</span><br><span class="line">                                                |-&#123;ad_preprocess&#125;(4555)</span><br><span class="line">                                                |-&#123;ad_preprocess&#125;(4556)</span><br><span class="line">                                                `-&#123;ad_preprocess&#125;(4557)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -534,11 +643,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C语言/" rel="tag"><i class="fa fa-tag"></i> C语言</a>
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
           
-            <a href="/tags/栈帧/" rel="tag"><i class="fa fa-tag"></i> 栈帧</a>
-          
-            <a href="/tags/函数/" rel="tag"><i class="fa fa-tag"></i> 函数</a>
+            <a href="/tags/命令/" rel="tag"><i class="fa fa-tag"></i> 命令</a>
           
         </div>
       
@@ -551,8 +658,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/05/2018目标/" rel="next" title="2018目标">
-                <i class="fa fa-chevron-left"></i> 2018目标
+              <a href="/2018/03/19/每日练习之字符串函数模拟实现/" rel="next" title="每日练习之字符串函数模拟实现">
+                <i class="fa fa-chevron-left"></i> 每日练习之字符串函数模拟实现
               </a>
             
           </div>
@@ -561,8 +668,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/15/每日练习之栈帧/" rel="prev" title="每日练习之栈帧">
-                每日练习之栈帧 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/21/Linux下使用命令安装gcc-g-gdb-vim/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -738,7 +845,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、什么是栈"><span class="nav-number">1.</span> <span class="nav-text">1、什么是栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、一个很常见的活动记录"><span class="nav-number">2.</span> <span class="nav-text">2、一个很常见的活动记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、我们来看一个看例子"><span class="nav-number">3.</span> <span class="nav-text">3、我们来看一个看例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、通过栈帧修改ret返回的地址"><span class="nav-number">4.</span> <span class="nav-text">4、通过栈帧修改ret返回的地址</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、Linux文件权限"><span class="nav-number">1.</span> <span class="nav-text">1、Linux文件权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、Linux下的重要目录的含义"><span class="nav-number">2.</span> <span class="nav-text">2、Linux下的重要目录的含义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、Linux一些重要的命令"><span class="nav-number">3.</span> <span class="nav-text">3、Linux一些重要的命令</span></a></li></ol></div>
             
 
           </div>
