@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="数组,指针," />
 
 
 
@@ -79,13 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="草莓干先生">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+<meta name="description" content="1、指针和数组  首先，必须明确指针就是指针，数组就是数组，指针和数组之间没有任何关系。  指针变量在32位系统下，永远占4字节，其值为某一个内存地址。指针可以指向任何地方。 数组的大小和元素的类型和个数有关；定义数组时必须指定其元素的类型和个数；数组可以存任何类型的数据，但不能存函数。指针和数组是完全不一样的东西，只是它们都可以“以指针的形式”或“以下标的形式”进行访问，一个是完全匿名的访问，一">
+<meta name="keywords" content="数组,指针">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解指针和数组">
+<meta property="og:url" content="http://yoursite.com/2018/03/21/深入理解指针和数组/index.html">
 <meta property="og:site_name" content="草莓干先生">
+<meta property="og:description" content="1、指针和数组  首先，必须明确指针就是指针，数组就是数组，指针和数组之间没有任何关系。  指针变量在32位系统下，永远占4字节，其值为某一个内存地址。指针可以指向任何地方。 数组的大小和元素的类型和个数有关；定义数组时必须指定其元素的类型和个数；数组可以存任何类型的数据，但不能存函数。指针和数组是完全不一样的东西，只是它们都可以“以指针的形式”或“以下标的形式”进行访问，一个是完全匿名的访问，一">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V117hBb71Wct8g/fcLyFR2yPZZd3OQ1HdCmw*qoMLVxORxC9cEco1Z.Zi4!/b/dCEBAAAAAAAA&ek=1&kp=1&pt=0&bo=6QR8AgAAAAADF6E!&vuin=541652148&tm=1521637200&sce=60-2-2&rf=viewer_4">
+<meta property="og:updated_time" content="2018-03-21T16:19:52.748Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="草莓干先生">
+<meta name="twitter:title" content="深入理解指针和数组">
+<meta name="twitter:description" content="1、指针和数组  首先，必须明确指针就是指针，数组就是数组，指针和数组之间没有任何关系。  指针变量在32位系统下，永远占4字节，其值为某一个内存地址。指针可以指向任何地方。 数组的大小和元素的类型和个数有关；定义数组时必须指定其元素的类型和个数；数组可以存任何类型的数据，但不能存函数。指针和数组是完全不一样的东西，只是它们都可以“以指针的形式”或“以下标的形式”进行访问，一个是完全匿名的访问，一">
+<meta name="twitter:image" content="http://a2.qpic.cn/psb?/V117hBb71Wct8g/fcLyFR2yPZZd3OQ1HdCmw*qoMLVxORxC9cEco1Z.Zi4!/b/dCEBAAAAAAAA&ek=1&kp=1&pt=0&bo=6QR8AgAAAAADF6E!&vuin=541652148&tm=1521637200&sce=60-2-2&rf=viewer_4">
 
 
 
@@ -115,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/21/深入理解指针和数组/"/>
 
 
 
 
 
-  <title>归档 | 草莓干先生</title>
+  <title>深入理解指针和数组 | 草莓干先生</title>
   
 
 
@@ -150,7 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -288,411 +295,300 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/21/深入理解指针和数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="whiltes">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://a2.qpic.cn/psb?/V117hBb71b29od/8.Z29kN.LWsACWxdXao51q0iY98UB6w5OedsxYqC3Qs!/c/dCEBAAAAAAAA&ek=1&kp=1&pt=0&bo=IAMgAwAAAAARFyA!&vuin=541652148&tm=1520092800&sce=60-2-2&rf=newphoto">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草莓干先生">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">深入理解指针和数组</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T20:57:07+08:00">
+                2018-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 14 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C语言解析/" itemprop="url" rel="index">
+                    <span itemprop="name">C语言解析</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/21/深入理解指针和数组/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/21/深入理解指针和数组/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
+             <span id="/2018/03/21/深入理解指针和数组/" class="leancloud_visitors" data-flag-title="深入理解指针和数组">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/21/深入理解指针和数组/" itemprop="url">
+          
+
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">深入理解指针和数组</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,371
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-21T20:57:07+08:00"
-              content="2018-03-21" >
-          03-21
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/21/Linux下使用命令安装gcc-g-gdb-vim/" itemprop="url">
-              
-                <span itemprop="name">Linux下使用命令安装gcc/g++,gdb</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-21T19:36:25+08:00"
-              content="2018-03-21" >
-          03-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/21/Linux基础知识/" itemprop="url">
-              
-                <span itemprop="name">Linux基础知识</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-21T17:28:28+08:00"
-              content="2018-03-21" >
-          03-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h4 id="1、指针和数组"><a href="#1、指针和数组" class="headerlink" title="1、指针和数组"></a>1、指针和数组</h4><p>  首先，必须明确指针就是指针，数组就是数组，<strong>指针和数组之间没有任何关系。</strong></p>
+<ul>
+<li>指针变量在32位系统下，永远占4字节，其值为某一个内存地址。指针可以指向任何地方。</li>
+<li>数组的大小和元素的类型和个数有关；定义数组时必须指定其元素的类型和个数；数组可以存任何类型的数据，但不能存函数。<br><strong>指针和数组是完全不一样的东西，只是它们都可以“以指针的形式”或“以下标的形式”进行访问，一个是完全匿名的访问，一个是典型的“具名+匿名”的访问。</strong></li>
+</ul>
+<h4 id="2、指针数组和数组指针"><a href="#2、指针数组和数组指针" class="headerlink" title="2、指针数组和数组指针"></a>2、指针数组和数组指针</h4><p><strong>指针数组：首先它是一个数组，数组的元素都是指针，数组占多少字节由数组本身决定，它是“储存指针的数组”的简称。</strong></p>
+<p><strong>数组指针：首先它是一个指针，它指向一个数组。在32为系统下永远占4字节，至于它指向的数组占多少字节并不知道。它是“指向数组的指针”的简称。</strong></p>
+<p><img src="http://a2.qpic.cn/psb?/V117hBb71Wct8g/fcLyFR2yPZZd3OQ1HdCmw*qoMLVxORxC9cEco1Z.Zi4!/b/dCEBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=6QR8AgAAAAADF6E!&amp;vuin=541652148&amp;tm=1521637200&amp;sce=60-2-2&amp;rf=viewer_4" alt=""></p>
+<p>这里区分指针数组和数组指针最重要的一点就是看<strong>优先级</strong>，“[]”的优先级比”*“高，因此p1先和“[]”结合，构成一个数组，数组名为p1，int *饰的是数组的内容，即数组的每个元素，因此int * P[6]是指针数组。又因为“（）”比“[]”优先级高，因此p2先和*结合构成一个指针,指针变量名为p2，int修饰的是数组的内容，即数组的每个元素，p2指向一个包含6个元素的数组，因此它是数组指针。</p>
+<h4 id="3、指针和数组的定义、声明"><a href="#3、指针和数组的定义、声明" class="headerlink" title="3、指针和数组的定义、声明"></a>3、指针和数组的定义、声明</h4><h5 id="1-定义为数组，声明为指针"><a href="#1-定义为数组，声明为指针" class="headerlink" title="1.定义为数组，声明为指针"></a>1.定义为数组，声明为指针</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//main.c</span><br><span class="line"></span><br><span class="line">char a[100];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//first.c</span><br><span class="line"></span><br><span class="line">extern char *a;</span><br></pre></td></tr></table></figure>
+<p>main.c定义了数组，first.c中声明它为指针，这种做法是错误的，main.c和first.c是单独编译的，main.c中，编译器知道a是一个数组，但在first.c中，编译器并不知道这一点，编译器只按照本文件声明的类型来处理，因此虽然a实际大小为100字节，但在first.c中，a只占4字节，这4个字节保存了一个地址，这个地址上存储的是字符型数据。</p>
+<h5 id="2-定义为指针，声明为数组"><a href="#2-定义为指针，声明为数组" class="headerlink" title="2.定义为指针，声明为数组"></a>2.定义为指针，声明为数组</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//main.c</span><br><span class="line"></span><br><span class="line">char *p = &quot;abcdefg&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//first.c</span><br><span class="line"></span><br><span class="line">extern char p[];</span><br></pre></td></tr></table></figure>
+<p>在main.c中，编译器分配4字节空间，并命名为p，同时p里保存了字符串常量的首字符的首地址，这个字符串常量本身保存在内存的静态区，内容不能更改，而在first.c中，编译器认为p是一个数组，其大小为4字节数组，保存的是char类型的数据，编译器把指针变量p当作一个包含4个char类型数据的数组来使用，指针p的四个之间会被按char类型取出p[0],p[1],p[2],p[3]，<br>如果给p[i]赋值则会把p原来的地址覆盖，导致无法在找到原来的内存。</p>
+<h4 id="4、函数指针"><a href="#4、函数指针" class="headerlink" title="4、函数指针"></a>4、函数指针</h4><h5 id="什么是函数指针？"><a href="#什么是函数指针？" class="headerlink" title="什么是函数指针？"></a>什么是函数指针？</h5><p>  函数指针就是函数的指针，它是一个指针，指向函数。</p>
+<ul>
+<li>void (*pfun1)(&nbsp;);</li>
+</ul>
+<p>这里的pfun1先和*结合，说明pfun1是指针，指针指向一个函数，指向的函数没有参数，并且返回值为void。</p>
+<h5 id="来看两个例子理解函数指针"><a href="#来看两个例子理解函数指针" class="headerlink" title="来看两个例子理解函数指针"></a>来看两个例子理解函数指针</h5><ul>
+<li>(*&nbsp;(void(&nbsp;*&nbsp;)(&nbsp;)&nbsp;)0&nbsp;)(&nbsp;);<ul>
+<li>void(*)(&nbsp;)，可以看出这是一个函数指针类型，这个函数没有参数，没有返回值</li>
+<li>(void(*)(&nbsp;)&nbsp;)0，这里是将0强制转换为函数指针类型，0是一个地址，将这个函数保存在首地址为0的一段区域内的函数。</li>
+<li>（*&nbsp;&nbsp;(&nbsp;&nbsp;void(*)&nbsp;&nbsp;(&nbsp;)&nbsp;)0&nbsp;)，这里对保存在首地址为0这一段区域内的函数进行解引用，取出保存在里边的函数。</li>
+<li>(&nbsp;*(void(&nbsp;*)(&nbsp;)&nbsp;)&nbsp;0&nbsp;)(&nbsp;)，进行函数的调用。</li>
+</ul>
+</li>
+<li>void(<em>signal(int, void(</em>)(int)))(int);<ul>
+<li>void(*&nbsp;)(&nbsp;int)，这是一个函数指针类型，参数为int型，没有返回值</li>
+<li>signal&nbsp;(int, void(*)&nbsp;(int)&nbsp;)，signal为一个函数，有两个参数，一个int型的参数，和一个函数指针</li>
+<li>void(*signal(&nbsp;int, void(*&nbsp;)(int&nbsp;)&nbsp;)&nbsp;)(&nbsp;int)，signal仍是一个函数，它返回一个函数指针，这个指针指向的函数没有返回值，只有一个int类型的参数。</li>
+</ul>
+</li>
+<li>void(*signal&nbsp;(int, void(*&nbsp;)(int)&nbsp;)&nbsp;)(int);可简化为<ul>
+<li>tpedef void&nbsp;(*pfun_t)(int);     </li>
+<li>pfun_tsignal&nbsp;(&nbsp;int, pfun_t);</li>
+</ul>
+</li>
+</ul>
+<h4 id="5、指向函数指针数组的指针"><a href="#5、指向函数指针数组的指针" class="headerlink" title="5、指向函数指针数组的指针"></a>5、指向函数指针数组的指针</h4><p><strong>我们先来看下什么是函数指针数组。</strong><br>把一个函数的地址存到一个数组中，那这个数组就叫函数指针数组。</p>
+<ul>
+<li>char<em>&nbsp;&nbsp;(</em>&nbsp;pf[3]&nbsp;)(&nbsp;char *p&nbsp;);<br>这是一个函数指针数组。它是一个数组，数组名为pf，数组内存储了3个指向函数的指针，这些指针指向一些返回值类型为指向字符的指针，参数为一个指向字符的指针的函数。</li>
+</ul>
+<p><strong>再下来再看函数指针数组的指针</strong></p>
+<ul>
+<li>char &nbsp;*&nbsp;&nbsp;(<em>&nbsp;(&nbsp;</em>pf&nbsp;)&nbsp;[3]&nbsp;)(&nbsp;char *p&nbsp;)<br>这里的pf是一个指针，这个指针指向一个包含了三个元素的数组，这个数组里边存的是指向函数的指针，这些指针指向一些返回值类型为指向字符的指针，参数为一个指向字符的指针的函数。</li>
+</ul>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/19/每日练习之字符串函数模拟实现/" itemprop="url">
-              
-                <span itemprop="name">每日练习之字符串函数模拟实现</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-19T11:39:36+08:00"
-              content="2018-03-19" >
-          03-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/19/main函数参数/" itemprop="url">
-              
-                <span itemprop="name">main函数参数</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-19T09:56:17+08:00"
-              content="2018-03-19" >
-          03-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/18/每日练习/" itemprop="url">
-              
-                <span itemprop="name">每日练习</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-18T18:48:14+08:00"
-              content="2018-03-18" >
-          03-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/18/每日练习之可变参数/" itemprop="url">
-              
-                <span itemprop="name">每日练习之可变参数</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-18T17:19:19+08:00"
-              content="2018-03-18" >
-          03-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/18/可变参数列表/" itemprop="url">
-              
-                <span itemprop="name">可变参数列表</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-18T15:56:27+08:00"
-              content="2018-03-18" >
-          03-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/17/每日练习之递归/" itemprop="url">
-              
-                <span itemprop="name">每日练习之递归</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-17T22:56:01+08:00"
-              content="2018-03-17" >
-          03-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/15/每日练习之栈帧/" itemprop="url">
-              
-                <span itemprop="name">每日练习之栈帧</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-15T18:56:01+08:00"
-              content="2018-03-15" >
-          03-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>不介意的话，可以请我喝杯咖啡吗？</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://a1.qpic.cn/psb?/V117hBb71b29od/fz8NyydTI.IqEFwnTziVmOqZIALd949Tt2gnZ88mnCg!/c/dKgAAAAAAAAA&ek=1&kp=1&pt=0&bo=PANwBAAAAAADF3k!&vuin=541652148&tm=1519999200&sce=60-2-2&rf=0-0" alt="whiltes 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数组/" rel="tag"><i class="fa fa-tag"></i> 数组</a>
+          
+            <a href="/tags/指针/" rel="tag"><i class="fa fa-tag"></i> 指针</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/21/Linux下使用命令安装gcc-g-gdb-vim/" rel="next" title="Linux下使用命令安装gcc/g++,gdb">
+                <i class="fa fa-chevron-left"></i> Linux下使用命令安装gcc/g++,gdb
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -700,6 +596,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -720,8 +623,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -815,6 +727,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、指针和数组"><span class="nav-number">1.</span> <span class="nav-text">1、指针和数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、指针数组和数组指针"><span class="nav-number">2.</span> <span class="nav-text">2、指针数组和数组指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、指针和数组的定义、声明"><span class="nav-number">3.</span> <span class="nav-text">3、指针和数组的定义、声明</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-定义为数组，声明为指针"><span class="nav-number">3.1.</span> <span class="nav-text">1.定义为数组，声明为指针</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-定义为指针，声明为数组"><span class="nav-number">3.2.</span> <span class="nav-text">2.定义为指针，声明为数组</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、函数指针"><span class="nav-number">4.</span> <span class="nav-text">4、函数指针</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是函数指针？"><span class="nav-number">4.1.</span> <span class="nav-text">什么是函数指针？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#来看两个例子理解函数指针"><span class="nav-number">4.2.</span> <span class="nav-text">来看两个例子理解函数指针</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、指向函数指针数组的指针"><span class="nav-number">5.</span> <span class="nav-text">5、指向函数指针数组的指针</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -967,6 +895,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
