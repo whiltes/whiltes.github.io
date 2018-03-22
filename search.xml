@@ -80,8 +80,8 @@
         <category>C语言练习</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>数组</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -92,8 +92,8 @@
         <category>C语言练习</category>
       </categories>
       <tags>
-        <tag>C语言</tag>
         <tag>可变参数</tag>
+        <tag>C语言</tag>
       </tags>
   </entry>
   <entry>
@@ -104,8 +104,8 @@
         <category>C语言解析</category>
       </categories>
       <tags>
-        <tag>C语言</tag>
         <tag>可变参数</tag>
+        <tag>C语言</tag>
       </tags>
   </entry>
   <entry>
@@ -140,8 +140,8 @@
         <category>C语言解析</category>
       </categories>
       <tags>
-        <tag>C语言</tag>
         <tag>函数</tag>
+        <tag>C语言</tag>
         <tag>栈帧</tag>
       </tags>
   </entry>
