@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="指针,函数," />
 
 
 
@@ -79,14 +79,18 @@
 
 
 
+<meta name="description" content="1、回调函数回调函数就是一个通过函数指针调用的函数。如果你把函数的指针（地址）作为参数传递给另一个函数，当这个指针被用来调用其所指向的函数时，我们就说这是回调函数。回调函数不是由该函数的实现方直接调用，而是在特定的事件或条件发生时由另外的一方调用的，用于对该事件或条件进行响应。 具体应用过程基本如下：  ⑴定义一个回调函数； ⑵提供函数实现的一方在初始化的时候，将回调函数的函数指针注册给调用者；">
+<meta name="keywords" content="指针,函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C语言的回掉函数和转移">
+<meta property="og:title" content="C语言的回调函数">
 <meta property="og:url" content="http://yoursite.com/2018/03/22/C语言的回调函数/index.html">
 <meta property="og:site_name" content="草莓干先生">
+<meta property="og:description" content="1、回调函数回调函数就是一个通过函数指针调用的函数。如果你把函数的指针（地址）作为参数传递给另一个函数，当这个指针被用来调用其所指向的函数时，我们就说这是回调函数。回调函数不是由该函数的实现方直接调用，而是在特定的事件或条件发生时由另外的一方调用的，用于对该事件或条件进行响应。 具体应用过程基本如下：  ⑴定义一个回调函数； ⑵提供函数实现的一方在初始化的时候，将回调函数的函数指针注册给调用者；">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-22T06:12:24.566Z">
+<meta property="og:updated_time" content="2018-03-22T15:09:43.311Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C语言的回掉函数和转移">
+<meta name="twitter:title" content="C语言的回调函数">
+<meta name="twitter:description" content="1、回调函数回调函数就是一个通过函数指针调用的函数。如果你把函数的指针（地址）作为参数传递给另一个函数，当这个指针被用来调用其所指向的函数时，我们就说这是回调函数。回调函数不是由该函数的实现方直接调用，而是在特定的事件或条件发生时由另外的一方调用的，用于对该事件或条件进行响应。 具体应用过程基本如下：  ⑴定义一个回调函数； ⑵提供函数实现的一方在初始化的时候，将回调函数的函数指针注册给调用者；">
 
 
 
@@ -122,7 +126,7 @@
 
 
 
-  <title>C语言的回掉函数和转移 | 草莓干先生</title>
+  <title>C语言的回调函数 | 草莓干先生</title>
   
 
 
@@ -320,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C语言的回掉函数和转移</h1>
+          <h1 class="post-title" itemprop="name headline">C语言的回调函数</h1>
         
 
         <div class="post-meta">
@@ -343,6 +347,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C语言解析/" itemprop="url" rel="index">
+                    <span itemprop="name">C语言解析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -360,7 +386,7 @@
 
           
           
-             <span id="/2018/03/22/C语言的回调函数/" class="leancloud_visitors" data-flag-title="C语言的回掉函数和转移">
+             <span id="/2018/03/22/C语言的回调函数/" class="leancloud_visitors" data-flag-title="C语言的回调函数">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -385,7 +411,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  539
                 </span>
               
 
@@ -401,7 +427,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -422,7 +448,16 @@
       
 
       
-        
+        <h4 id="1、回调函数"><a href="#1、回调函数" class="headerlink" title="1、回调函数"></a>1、回调函数</h4><p>回调函数就是一个通过函数指针调用的函数。如果你把函数的指针（地址）作为参数传递给另一个函数，当这个指针被用来调用其所指向的函数时，我们就说这是回调函数。回调函数不是由该函数的实现方直接调用，而是在特定的事件或条件发生时由另外的一方调用的，用于对该事件或条件进行响应。</p>
+<p><strong>具体应用过程基本如下：</strong></p>
+<ul>
+<li>⑴定义一个回调函数；</li>
+<li>⑵提供函数实现的一方在初始化的时候，将回调函数的函数指针注册给调用者；</li>
+<li>⑶当特定的事件或条件发生的时候，调用者使用函数指针调用回调函数对事件进行处理。</li>
+</ul>
+<h4 id="2、qsort的应用"><a href="#2、qsort的应用" class="headerlink" title="2、qsort的应用"></a>2、qsort的应用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;search.h&gt;</span><br><span class="line"></span><br><span class="line">int cmp_char(const void *x, const void *y)</span><br><span class="line">&#123;</span><br><span class="line">	char *_x = (char *)x;</span><br><span class="line">	char *_y = (char *)y;</span><br><span class="line"></span><br><span class="line">	return *_x &gt; *_y ? 1 : *_x&lt; *_y ? -1 : 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	char a[] = &#123;2,23,123,21,5,6,78,9,0,45&#125;;</span><br><span class="line">	int size = sizeof(a)/sizeof(a[0]);</span><br><span class="line"></span><br><span class="line">	qsort(a , size, sizeof(char),  cmp_char);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3、my-qsort（利用冒泡排序）"><a href="#3、my-qsort（利用冒泡排序）" class="headerlink" title="3、my_qsort（利用冒泡排序）"></a>3、my_qsort（利用冒泡排序）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;assert.h&gt;</span><br><span class="line"></span><br><span class="line">int cmp_int(const void *x, const void *y)</span><br><span class="line">&#123;</span><br><span class="line">	int *_x = (int *)x;</span><br><span class="line">	int *_y = (int *)y;</span><br><span class="line"></span><br><span class="line">	return *_x &gt; *_y ? 1 : *_x&lt; *_y ? -1 : 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void my_swap(void *p, void *q, int size)</span><br><span class="line">&#123;</span><br><span class="line">	int i = 0;</span><br><span class="line">	char tmp = 0;</span><br><span class="line"></span><br><span class="line">	assert(p);</span><br><span class="line">	assert(q);</span><br><span class="line"></span><br><span class="line">	for(i=0; i&lt;size; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		tmp = *((char*)p+i);</span><br><span class="line">		*((char*)p+i) = *((char*)q+i);</span><br><span class="line">		*((char*)q+i) = tmp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void my_qsort(void *base, int num, int size, int(*cmp)(void *, void *))</span><br><span class="line">&#123;</span><br><span class="line">	int i = 0;</span><br><span class="line">	int j = 0;</span><br><span class="line"></span><br><span class="line">	for(i=0; i&lt;num-1 ;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		int flag = 1;</span><br><span class="line">		for(j=0; j&lt;num-1-i; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			//自己写的比较函数</span><br><span class="line">			if(cmp((char*)base + j*size, (char*)base + (j+1)*size) &gt;0)      </span><br><span class="line">			&#123;</span><br><span class="line">				my_swap((char*)base + j*size, (char*)base + (j+1)*size, size);</span><br><span class="line">				flag = 0;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if(flag)</span><br><span class="line">			return;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a[] = &#123;1,324,435,7,8,99,4,2,34,123&#125;;</span><br><span class="line">	int size = sizeof(a)/sizeof(a[0]);</span><br><span class="line"></span><br><span class="line">	my_qsort(a, size, sizeof(int), cmp_int);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -461,6 +496,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/指针/" rel="tag"><i class="fa fa-tag"></i> 指针</a>
+          
+            <a href="/tags/函数/" rel="tag"><i class="fa fa-tag"></i> 函数</a>
+          
+        </div>
+      
 
       
       
@@ -479,10 +522,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/22/C语言的回调函数和转移/" rel="prev" title="C语言的回调函数">
-                C语言的回调函数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -543,8 +582,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -563,7 +611,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -638,6 +686,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、回调函数"><span class="nav-number">1.</span> <span class="nav-text">1、回调函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、qsort的应用"><span class="nav-number">2.</span> <span class="nav-text">2、qsort的应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、my-qsort（利用冒泡排序）"><span class="nav-number">3.</span> <span class="nav-text">3、my_qsort（利用冒泡排序）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
