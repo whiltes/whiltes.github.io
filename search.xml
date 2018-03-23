@@ -20,8 +20,8 @@
         <category>C语言解析</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>指针</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -80,8 +80,8 @@
         <category>C语言练习</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>字符串</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -141,8 +141,8 @@
       </categories>
       <tags>
         <tag>C语言</tag>
-        <tag>栈帧</tag>
         <tag>函数</tag>
+        <tag>栈帧</tag>
       </tags>
   </entry>
   <entry>
