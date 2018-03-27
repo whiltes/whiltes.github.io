@@ -3,9 +3,25 @@
 
 
     
+    
+  <url>
+    <loc>http://yoursite.com/2018/03/25/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</loc>
+    <lastmod>2018-03-25T07:50:52.158Z</lastmod>
+    <data>
+        <display>
+        <title>Linux学习笔记一</title>
+        <pubTime>2018-03-25T07:50:52.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
   <url>
     <loc>http://yoursite.com/2018/03/24/%E6%8C%87%E9%92%88%E5%92%8C%E6%95%B0%E7%BB%84%E7%9A%84%E7%BB%8F%E5%85%B8%E4%B9%A0%E9%A2%98/</loc>
-    <lastmod>2018-03-24T15:53:38.124Z</lastmod>
+    <lastmod>2018-03-24T16:03:00.564Z</lastmod>
     <data>
         <display>
         <title>指针和数组的经典习题</title>
@@ -165,9 +181,9 @@
         <title>可变参数列表</title>
         <pubTime>2018-03-18T07:56:27.000Z</pubTime>
         
-        <tag>可变参数</tag>
-         
         <tag>C语言</tag>
+         
+        <tag>可变参数</tag>
          
          
            
@@ -297,9 +313,9 @@
         <title>每日练习之可变参数</title>
         <pubTime>2018-03-18T09:19:19.000Z</pubTime>
         
-        <tag>可变参数</tag>
-         
         <tag>C语言</tag>
+         
+        <tag>可变参数</tag>
          
          
            

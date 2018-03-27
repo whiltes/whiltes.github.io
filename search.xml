@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux学习笔记一]]></title>
+    <url>%2F2018%2F03%2F25%2FLinux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[指针和数组的经典习题]]></title>
     <url>%2F2018%2F03%2F24%2F%E6%8C%87%E9%92%88%E5%92%8C%E6%95%B0%E7%BB%84%E7%9A%84%E7%BB%8F%E5%85%B8%E4%B9%A0%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[练习1：12345678910#include &lt;stdio.h&gt;int main()&#123; int a[5] = &#123;1,2,3,4,5&#125;; int *ptr = (int*)(&amp;a+1); printf(&quot;%d,%d&quot;, *(a+1), *(ptr-1)); return 0;&#125; &amp;a表示的是整个数组，&amp;a+1则表示数组a后边的下一个数组，这里它强制转换成(int*)，则百（&amp;a+1）变为4字节，即5后边的四个字节，*（ptr-1）即是 5；*（a+1）这里的a表示的是数组的地址，也是数组首元素的地址，*（a+1）则表示数组的第二个元素即2；运行结果如下： &amp;数组名 和 sizeof（数组名），这里的数组名都表示的是整个数组。 练习2：12345678910111213141516171819struct Test&#123; int Num; char *pcName; short sDate; char cha[2]; short sBa[4];&#125;*p;int main()&#123; printf(&quot;%d\n&quot;, sizeof(*p)); printf(&quot;%p\n&quot;, p+1); printf(&quot;%p\n&quot;, (unsigned long)p + 1); printf(&quot;%p\n&quot;, (unsigned int*)p +1); return 0;&#125; 假设p的值为0x00000这里定义了一个结构体，根据结构体的内存对齐，可以算出这个结构体的大小为20字节，则sizeof（p）为20；p+1即指向下一个结构体，因此它的地址为0x00014;(unsigned long)p这里要特别注意，p本来是指针，这里将它强转为unsigned long这里的p不在是指针，而是一个无符号整数，因此给p加一，即为1；（unsigned int）p这里也对p进行了强制类型转换，p变成了指向无符号整形数的一个指针，对指针加1，即加四个字节，因此这里为0x00004；运行结果如下： 练习3：123456789int main()&#123; int a[4] = &#123;1,2,3,4&#125;; int *ptr1 = (int*)(&amp;a+1); //4 int *ptr2 = (int*)((int)a+1);//2000000 printf(&quot;%x, %x\n&quot;, ptr1[-1],*ptr2);&#125; 这里的&amp;a+1表示下一个数组，然后（int*）进行强制类型转换后，占四字节，ptr1[-1]即*(ptr1-1)表示的是a数组的最后一个元素即4；(int(a)+1),这里有个大坑，它将数组的首元素的第一个字节的地址进行强制转换成整形，+1在转换成整形指针，解引用后是这四个字节的地址。如图： 这里在求值的时候又有一个坑，特别要注意大小端，负责依然无法做对。 运行结果如图： 练习4：1234567891011#include &lt;stdio.h&gt;int main(int argc, char * argv[])&#123; int a[3][2] = &#123;(0,1),(2,3),(4,5)&#125;; int *p; p = a[0]; printf(&quot;%d\n&quot;, p[0]); return 0;&#125; 这里的坑就是一定要注意数组赋值时的逗号表达式。 运行结果如图： 练习5；12345678int main()&#123; int a[5][5]; int(*p)[4]; p = a; printf(&quot;a_ptr=%#p,p_ptr=%#p\n&quot;, &amp;a[4][2],&amp;p[4][2]); printf(&quot;%p,%d\n&quot;, &amp;p[4][2]-&amp;a[4][2], &amp;p[4][2]-&amp;a[4][2]);&#125; 这里的 int(*p)[4]定义了一个数组指针，每个指针指向一个含四个元素的数组，这里的&amp;p[4][2],可以看成(*(p+4)+2);因此指向如图的位置，还有就是%p打印的地址为无符号整形，具体如图所示： 运行结果如图： 练习6：1234567int main()&#123; int aa[2][5] = &#123;1,2,3,4,5,6,7,8,9,10&#125;; int *ptr1 = (int*)(&amp;aa+1); int *ptr2 = (int*)(*(aa+1); printf(&quot;%d,%d&quot;,*(ptr-1),*(ptr2-1));&#125; 这里需要注意的是&amp;数组名为整个数组。答案为10，5；运行结果如图： 练习8：123456789int main()&#123; char *a[] = &#123;&quot;work&quot;,&quot;at&quot;,&quot;alibaba&quot;&#125;; char**pa = a; pa++; printf(&quot;%s\n&quot;, *pa); return 0;&#125; *a[]为一个数组指针，pa为一个二级指针，它是数组指针的指针，pa++相当于指向第二个数组指针，解引用则为第二个数组 “at”；运行结果如图： 练习9：1234567891011121314#include &lt;stdio.h&gt;int main()&#123; char *c[] = &#123;&quot;ENTER&quot;,&quot;NEW&quot;,&quot;POINT&quot;,&quot;FIRST&quot;&#125;; char**cp[] = &#123;c+3,c+2,c+1,c&#125;; char***cpp = cp; printf(&quot;%s\n&quot;, **++cp); printf(&quot;%s\n&quot;, *--*++cp+3); printf(&quot;%s\n&quot;, *cpp[-2]+3); printf(&quot;%s\n&quot;, cpp[-1][-1]+1);&#125; 根据代码先画出下图 **++cp里先算++cp，它指向c+2然后解引用指向第三个char*，在解引用就是“POINT”,这里cp现在指向c+2； *–*++cp+3里先运算++cp，在解引用，然后指向c+2，在减减，指向c+3解引用指向第四个char*，然后在+3，则输出ER；这里cp指向c+1，记住借用++cpp之后，减减不在改变cp的值 *cpp[-2]+3可以看成(((cpp-2)))+3,输出ST,这里cpp-2并不改变cpp的值 cpp[-1][-1]+1可以看成(((cpp-1)-1))+1输出EW，这里的cpp依然还指向c+2运行结果如图所示：]]></content>
+    <content type="text"><![CDATA[练习1：12345678910#include &lt;stdio.h&gt;int main()&#123; int a[5] = &#123;1,2,3,4,5&#125;; int *ptr = (int*)(&amp;a+1); printf(&quot;%d,%d&quot;, *(a+1), *(ptr-1)); return 0;&#125; &amp;a表示的是整个数组，&amp;a+1则表示数组a后边的下一个数组，这里它强制转换成(int*)，则百（&amp;a+1）变为4字节，即5后边的四个字节，*（ptr-1）即是 5；*（a+1）这里的a表示的是数组的地址，也是数组首元素的地址，*（a+1）则表示数组的第二个元素即2；运行结果如下： &amp;数组名 和 sizeof（数组名），这里的数组名都表示的是整个数组。 练习2：12345678910111213141516171819struct Test&#123; int Num; char *pcName; short sDate; char cha[2]; short sBa[4];&#125;*p;int main()&#123; printf(&quot;%d\n&quot;, sizeof(*p)); printf(&quot;%p\n&quot;, p+1); printf(&quot;%p\n&quot;, (unsigned long)p + 1); printf(&quot;%p\n&quot;, (unsigned int*)p +1); return 0;&#125; 假设p的值为0x00000这里定义了一个结构体，根据结构体的内存对齐，可以算出这个结构体的大小为20字节，则sizeof（p）为20；p+1即指向下一个结构体，因此它的地址为0x00014;(unsigned long)p这里要特别注意，p本来是指针，这里将它强转为unsigned long这里的p不在是指针，而是一个无符号整数，因此给p加一，即为1；（unsigned int）p这里也对p进行了强制类型转换，p变成了指向无符号整形数的一个指针，对指针加1，即加四个字节，因此这里为0x00004；运行结果如下： 练习3：123456789int main()&#123; int a[4] = &#123;1,2,3,4&#125;; int *ptr1 = (int*)(&amp;a+1); //4 int *ptr2 = (int*)((int)a+1);//2000000 printf(&quot;%x, %x\n&quot;, ptr1[-1],*ptr2);&#125; 这里的&amp;a+1表示下一个数组，然后（int*）进行强制类型转换后，占四字节，ptr1[-1]即*(ptr1-1)表示的是a数组的最后一个元素即4；(int(a)+1),这里有个大坑，它将数组的首元素的第一个字节的地址进行强制转换成整形，+1在转换成整形指针，解引用后是这四个字节的地址。如图： 这里在求值的时候又有一个坑，特别要注意大小端，负责依然无法做对。 运行结果如图： 练习4：1234567891011#include &lt;stdio.h&gt;int main(int argc, char * argv[])&#123; int a[3][2] = &#123;(0,1),(2,3),(4,5)&#125;; int *p; p = a[0]; printf(&quot;%d\n&quot;, p[0]); return 0;&#125; 这里的坑就是一定要注意数组赋值时的逗号表达式。 运行结果如图： 练习5；12345678int main()&#123; int a[5][5]; int(*p)[4]; p = a; printf(&quot;a_ptr=%#p,p_ptr=%#p\n&quot;, &amp;a[4][2],&amp;p[4][2]); printf(&quot;%p,%d\n&quot;, &amp;p[4][2]-&amp;a[4][2], &amp;p[4][2]-&amp;a[4][2]);&#125; 这里的 int(*p)[4]定义了一个数组指针，每个指针指向一个含四个元素的数组，这里的&amp;p[4][2],可以看成(*(p+4)+2);因此指向如图的位置，还有就是%p打印的地址为无符号整形，具体如图所示： 运行结果如图： 练习6：1234567int main()&#123; int aa[2][5] = &#123;1,2,3,4,5,6,7,8,9,10&#125;; int *ptr1 = (int*)(&amp;aa+1); int *ptr2 = (int*)(*(aa+1); printf(&quot;%d,%d&quot;,*(ptr-1),*(ptr2-1));&#125; 这里需要注意的是&amp;数组名为整个数组。答案为10，5；运行结果如图： 练习7：123456789int main()&#123; char *a[] = &#123;&quot;work&quot;,&quot;at&quot;,&quot;alibaba&quot;&#125;; char**pa = a; pa++; printf(&quot;%s\n&quot;, *pa); return 0;&#125; *a[]为一个数组指针，pa为一个二级指针，它是数组指针的指针，pa++相当于指向第二个数组指针，解引用则为第二个数组 “at”；运行结果如图： 练习8：1234567891011121314#include &lt;stdio.h&gt;int main()&#123; char *c[] = &#123;&quot;ENTER&quot;,&quot;NEW&quot;,&quot;POINT&quot;,&quot;FIRST&quot;&#125;; char**cp[] = &#123;c+3,c+2,c+1,c&#125;; char***cpp = cp; printf(&quot;%s\n&quot;, **++cp); printf(&quot;%s\n&quot;, *--*++cp+3); printf(&quot;%s\n&quot;, *cpp[-2]+3); printf(&quot;%s\n&quot;, cpp[-1][-1]+1);&#125; 根据代码先画出下图 **++cp里先算++cp，它指向c+2然后解引用指向第三个char*，在解引用就是“POINT”,这里cp现在指向c+2； *–*++cp+3里先运算++cp，在解引用，然后指向c+2，在减减，指向c+3解引用指向第四个char*，然后在+3，则输出ER；这里cp指向c+1，记住借用++cpp之后，减减不在改变cp的值 *cpp[-2]+3可以看成(((cpp-2)))+3,输出ST,这里cpp-2并不改变cpp的值 cpp[-1][-1]+1可以看成(((cpp-1)-1))+1输出EW，这里的cpp依然还指向c+2运行结果如图所示：]]></content>
       <categories>
         <category>C语言练习</category>
       </categories>
@@ -115,8 +120,8 @@
         <category>C语言练习</category>
       </categories>
       <tags>
-        <tag>可变参数</tag>
         <tag>C语言</tag>
+        <tag>可变参数</tag>
       </tags>
   </entry>
   <entry>
@@ -127,8 +132,8 @@
         <category>C语言解析</category>
       </categories>
       <tags>
-        <tag>可变参数</tag>
         <tag>C语言</tag>
+        <tag>可变参数</tag>
       </tags>
   </entry>
   <entry>

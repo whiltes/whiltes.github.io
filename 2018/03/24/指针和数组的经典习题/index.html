@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2018/03/24/9qaMi8.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/03/24/9qdPwq.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/03/24/9qdgXj.png">
-<meta property="og:updated_time" content="2018-03-24T15:53:38.124Z">
+<meta property="og:updated_time" content="2018-03-24T16:03:00.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指针和数组的经典习题">
 <meta name="twitter:description" content="练习1：12345678910#include &amp;lt;stdio.h&amp;gt;int main()&amp;#123;	int a[5] = &amp;#123;1,2,3,4,5&amp;#125;;	int *ptr = (int*)(&amp;amp;a+1);	printf(&amp;quot;%d,%d&amp;quot;, *(a+1), *(ptr-1));	return 0;&amp;#125; &amp;amp;a表示的是整个数组，&amp;amp;">
@@ -497,10 +497,10 @@
 <p>运行结果如图：<br><img src="https://s1.ax1x.com/2018/03/24/9qUe4U.md.png" alt=""></p>
 <h4 id="练习6："><a href="#练习6：" class="headerlink" title="练习6："></a>练习6：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int aa[2][5] = &#123;1,2,3,4,5,6,7,8,9,10&#125;;</span><br><span class="line">	int *ptr1 = (int*)(&amp;aa+1);</span><br><span class="line">	int *ptr2 = (int*)(*(aa+1);</span><br><span class="line">	printf(&quot;%d,%d&quot;,*(ptr-1),*(ptr2-1));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里需要注意的是&amp;数组名为整个数组。答案为10，5；<br>运行结果如图：<br><img src="https://s1.ax1x.com/2018/03/24/9qUqGF.png" alt=""></p>
-<h4 id="练习8："><a href="#练习8：" class="headerlink" title="练习8："></a>练习8：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	char *a[] = &#123;&quot;work&quot;,&quot;at&quot;,&quot;alibaba&quot;&#125;;</span><br><span class="line">	char**pa = a;</span><br><span class="line">	pa++;</span><br><span class="line">	printf(&quot;%s\n&quot;, *pa);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="练习7："><a href="#练习7：" class="headerlink" title="练习7："></a>练习7：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	char *a[] = &#123;&quot;work&quot;,&quot;at&quot;,&quot;alibaba&quot;&#125;;</span><br><span class="line">	char**pa = a;</span><br><span class="line">	pa++;</span><br><span class="line">	printf(&quot;%s\n&quot;, *pa);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>*a[]为一个数组指针，pa为一个二级指针，它是数组指针的指针，pa++相当于指向第二个数组指针，解引用则为第二个数组 “at”；<br>运行结果如图：</p>
 <p><img src="https://s1.ax1x.com/2018/03/24/9qaMi8.png" alt=""></p>
-<h4 id="练习9："><a href="#练习9：" class="headerlink" title="练习9："></a>练习9：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	char *c[] = &#123;&quot;ENTER&quot;,&quot;NEW&quot;,&quot;POINT&quot;,&quot;FIRST&quot;&#125;;</span><br><span class="line">	char**cp[] = &#123;c+3,c+2,c+1,c&#125;;</span><br><span class="line">	char***cpp = cp;</span><br><span class="line"></span><br><span class="line">	printf(&quot;%s\n&quot;, **++cp);</span><br><span class="line">	printf(&quot;%s\n&quot;, *--*++cp+3);</span><br><span class="line">	printf(&quot;%s\n&quot;, *cpp[-2]+3);</span><br><span class="line">	printf(&quot;%s\n&quot;, cpp[-1][-1]+1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="练习8："><a href="#练习8：" class="headerlink" title="练习8："></a>练习8：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	char *c[] = &#123;&quot;ENTER&quot;,&quot;NEW&quot;,&quot;POINT&quot;,&quot;FIRST&quot;&#125;;</span><br><span class="line">	char**cp[] = &#123;c+3,c+2,c+1,c&#125;;</span><br><span class="line">	char***cpp = cp;</span><br><span class="line"></span><br><span class="line">	printf(&quot;%s\n&quot;, **++cp);</span><br><span class="line">	printf(&quot;%s\n&quot;, *--*++cp+3);</span><br><span class="line">	printf(&quot;%s\n&quot;, *cpp[-2]+3);</span><br><span class="line">	printf(&quot;%s\n&quot;, cpp[-1][-1]+1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>根据代码先画出下图<br><img src="https://s1.ax1x.com/2018/03/24/9qdPwq.png" alt=""></p>
 <ul>
 <li>**++cp里先算++cp，它指向c+2然后解引用指向第三个char*，在解引用就是“POINT”,<strong>这里cp现在指向c+2；</strong></li>
@@ -573,6 +573,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/25/Linux学习笔记一/" rel="prev" title="Linux学习笔记一">
+                Linux学习笔记一 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -662,7 +666,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -747,7 +751,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#练习1："><span class="nav-number">1.</span> <span class="nav-text">练习1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习2："><span class="nav-number">2.</span> <span class="nav-text">练习2：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习3："><span class="nav-number">3.</span> <span class="nav-text">练习3：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习4："><span class="nav-number">4.</span> <span class="nav-text">练习4：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习5；"><span class="nav-number">5.</span> <span class="nav-text">练习5；</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习6："><span class="nav-number">6.</span> <span class="nav-text">练习6：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习8："><span class="nav-number">7.</span> <span class="nav-text">练习8：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习9："><span class="nav-number">8.</span> <span class="nav-text">练习9：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#练习1："><span class="nav-number">1.</span> <span class="nav-text">练习1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习2："><span class="nav-number">2.</span> <span class="nav-text">练习2：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习3："><span class="nav-number">3.</span> <span class="nav-text">练习3：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习4："><span class="nav-number">4.</span> <span class="nav-text">练习4：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习5；"><span class="nav-number">5.</span> <span class="nav-text">练习5；</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习6："><span class="nav-number">6.</span> <span class="nav-text">练习6：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习7："><span class="nav-number">7.</span> <span class="nav-text">练习7：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习8："><span class="nav-number">8.</span> <span class="nav-text">练习8：</span></a></li></ol></div>
             
 
           </div>
